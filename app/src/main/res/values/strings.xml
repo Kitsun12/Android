@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">AndroidERestaurant</string>
+    <string name="chezPapa">Chez PAPA</string>
+    <string-array name="titleEntrees">
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+
+    </string-array>
+    <string-array name="titlePlats">
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+    </string-array>
+    <string-array name="titleDesserts">
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+        <item>titre</item>
+    </string-array>
+    <string-array name="descEntrees">
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+    </string-array>
+    <string-array name="descPlats">
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+    </string-array>
+    <string-array name="descDesserts">
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+        <item>descipt</item>
+    </string-array>
+</resources>
