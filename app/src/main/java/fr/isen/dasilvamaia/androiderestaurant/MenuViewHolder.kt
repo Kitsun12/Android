@@ -13,4 +13,6 @@ class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         menuItemTextView.text = menuItem
         descriptionTextView.text = descriptionItem
     }
+
+
 }

@@ -1,5 +1,6 @@
 package fr.isen.dasilvamaia.androiderestaurant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -27,7 +28,13 @@ class menuCarte : AppCompatActivity() {
 
         val menuList = findViewById<RecyclerView>(R.id.menuList)
         menuList.layoutManager = LinearLayoutManager(this)
-        menuList.adapter = MenuAdapter(resources.getStringArray(R.array.titleEntrees),resources.getStringArray(R.array.descEntrees))
+        menuList.adapter = MenuAdapter(resources.getStringArray(R.array.titleEntrees),resources.getStringArray(R.array.descEntrees),object : MenuAdapter.OnMenuItemClickListener {
+            override fun onItemClick(menuItems: String) {
+                val intent = Intent(this@menuCarte, DetailedItem::class.java)
+                intent.putExtra("Entrees", menuItems)
+                startActivity(intent)
+            }
+        })
     }
 
     private fun showPlatsMenu() {
@@ -36,7 +43,13 @@ class menuCarte : AppCompatActivity() {
 
         val menuList = findViewById<RecyclerView>(R.id.menuList)
         menuList.layoutManager = LinearLayoutManager(this)
-        menuList.adapter = MenuAdapter(resources.getStringArray(R.array.titlePlats),resources.getStringArray(R.array.descPlats))
+        menuList.adapter = MenuAdapter(resources.getStringArray(R.array.titlePlats),resources.getStringArray(R.array.descPlats),object : MenuAdapter.OnMenuItemClickListener {
+            override fun onItemClick(menuItems: String) {
+                val intent = Intent(this@menuCarte, DetailedItem::class.java)
+                intent.putExtra("menuItem", menuItems)
+                startActivity(intent)
+            }
+        })
     }
 
     private fun showDessertsMenu() {
@@ -45,7 +58,13 @@ class menuCarte : AppCompatActivity() {
 
         val menuList = findViewById<RecyclerView>(R.id.menuList)
         menuList.layoutManager = LinearLayoutManager(this)
-        menuList.adapter = MenuAdapter(resources.getStringArray(R.array.titlePlats),resources.getStringArray(R.array.descDesserts))
+        menuList.adapter = MenuAdapter(resources.getStringArray(R.array.titlePlats),resources.getStringArray(R.array.descDesserts),object : MenuAdapter.OnMenuItemClickListener {
+            override fun onItemClick(menuItems: String) {
+                val intent = Intent(this@menuCarte, DetailedItem::class.java)
+                intent.putExtra("menuItem", menuItems)
+                startActivity(intent)
+            }
+        })
     }
 
     private fun showError() {

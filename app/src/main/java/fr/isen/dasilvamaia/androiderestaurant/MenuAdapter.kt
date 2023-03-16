@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MenuAdapter(private val menuItems: Array<String>,private val descriptionItem: Array<String>) :
+class MenuAdapter(private val menuItems: Array<String>,private val descriptionItem: Array<String>,private val onMenuItemClickListener: OnMenuItemClickListener) :
     RecyclerView.Adapter<MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
@@ -15,9 +15,15 @@ class MenuAdapter(private val menuItems: Array<String>,private val descriptionIt
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         holder.bind(menuItems[position],descriptionItem[position])
+        holder.itemView.setOnClickListener {
+            onMenuItemClickListener.onItemClick(menuItems[position])
+        }
     }
 
     override fun getItemCount(): Int {
         return menuItems.size
+    }
+    interface OnMenuItemClickListener{
+        fun onItemClick(menuItems: String)
     }
 }
