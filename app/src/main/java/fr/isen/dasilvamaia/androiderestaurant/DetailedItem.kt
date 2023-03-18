@@ -8,6 +8,6 @@ class DetailedItem : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed_item)
         val category = intent.getStringExtra("Entrees")
-        WebService();
+
     }
 }
