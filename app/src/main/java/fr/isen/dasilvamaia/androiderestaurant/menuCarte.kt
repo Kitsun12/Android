@@ -1,7 +1,11 @@
 package fr.isen.dasilvamaia.androiderestaurant
 
+import android.content.Intent
+import android.media.MediaRouter.RouteCategory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.Log
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +16,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import fr.isen.dasilvamaia.androiderestaurant.MenuAdapter.OnMenuItemClickListener
 import org.json.JSONObject
 
 class menuCarte : AppCompatActivity() {
@@ -49,7 +54,7 @@ class menuCarte : AppCompatActivity() {
 
                 // Filter menu items based on the selected category
                 val selectedCategory = menuResult.data.find { it.name_fr == category }
-
+                Log.d("von",selectedCategory.toString())
                 // Update the adapter with the filtered menu items
                 selectedCategory?.let {
                     val menuItems = it.items
@@ -65,8 +70,16 @@ class menuCarte : AppCompatActivity() {
 
     private fun displayMenu(menuItems: List<MenuItem>,category: String) {
         menuTextView.text = category
-        menuList.adapter = MenuAdapter(menuItems)
-
+        menuList.adapter = MenuAdapter(menuItems, object : MenuAdapter.OnMenuItemClickListener {
+            override fun onMenuItemClick(menuItem: MenuItem) {
+                val intent = Intent(this@menuCarte, DetailedItem::class.java)
+                intent.putExtra("name_fr", menuItem.name_fr)
+                intent.putExtra("description", menuItem.description)
+                intent.putExtra("price", menuItem.price)
+                startActivity(intent)}
+                // Ajouter le code ici pour gérer le clic sur un élément du menu
+            }
+        )
     }
 
     private fun showError() {
@@ -75,5 +88,36 @@ class menuCarte : AppCompatActivity() {
 
     data class MenuResult(val data: List<MenuCategory>)
     data class MenuCategory(val name_fr: String, val items: List<MenuItem>)
-    data class MenuItem(val name_fr: String, val description: String, val price: String, val images: List<String>)
+    data class MenuItem(val name_fr: String, val description: String, val price: String, val images: List<String>) :
+        Parcelable {
+
+        constructor(parcel: Parcel) : this(
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.readString()!!,
+            parcel.createStringArrayList()!!
+        )
+
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeString(name_fr)
+            parcel.writeString(description)
+            parcel.writeString(price)
+            parcel.writeStringList(images)
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<MenuItem> {
+            override fun createFromParcel(parcel: Parcel): MenuItem {
+                return MenuItem(parcel)
+            }
+
+            override fun newArray(size: Int): Array<MenuItem?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 }
+
