@@ -1,10 +1,10 @@
 package fr.isen.dasilvamaia.androiderestaurant
-import fr.isen.dasilvamaia.androiderestaurant.menuCarte.MenuItem
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.ActionMenuView.OnMenuItemClickListener
-class MenuAdapter(private val menuItems: List<MenuItem>, private val onMenuItemClickListener: OnMenuItemClickListener) :
+class MenuAdapter(private val menuItems: List<Items>, private val onMenuItemClickListener: OnMenuItemClickListener) :
     RecyclerView.Adapter<MenuViewHolder>() {
     init {
         notifyDataSetChanged()
@@ -17,7 +17,9 @@ class MenuAdapter(private val menuItems: List<MenuItem>, private val onMenuItemC
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         holder.bind(menuItems[position])
-        holder.itemView.setOnClickListener { onMenuItemClickListener.onMenuItemClick(menuItems[position]) }
+        holder.itemView.setOnClickListener {
+            onMenuItemClickListener.onMenuItemClick(menuItems[position])
+        }
 
     }
 
@@ -25,7 +27,7 @@ class MenuAdapter(private val menuItems: List<MenuItem>, private val onMenuItemC
         return menuItems.size
     }
     interface OnMenuItemClickListener {
-        fun onMenuItemClick(menuItem: MenuItem)
+        fun onMenuItemClick(menuItem: Items)
     }
 
 

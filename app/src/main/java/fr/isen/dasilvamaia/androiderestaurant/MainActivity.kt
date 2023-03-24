@@ -17,21 +17,21 @@ class MainActivity : AppCompatActivity() {
         // Écoute les clics sur les boutons
         entreesButton.setOnClickListener {
             // Lance la nouvelle activité pour les entrées
-            val intent = Intent(this, menuCarte::class.java)
+            val intent = Intent(this, MenuCarteActivity::class.java)
             intent.putExtra("category", "entrees")
             startActivity(intent)
         }
 
         platsButton.setOnClickListener {
             // Lance la nouvelle activité pour les plats
-            val intent = Intent(this, menuCarte::class.java)
+            val intent = Intent(this, MenuCarteActivity::class.java)
             intent.putExtra("category", "plats")
             startActivity(intent)
         }
 
         dessertsButton.setOnClickListener {
             // Lance la nouvelle activité pour les desserts
-            val intent = Intent(this, menuCarte::class.java)
+            val intent = Intent(this, MenuCarteActivity::class.java)
             intent.putExtra("category", "dessert")
             startActivity(intent)
         }

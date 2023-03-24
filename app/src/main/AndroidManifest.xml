@@ -22,7 +22,7 @@
             android:name=".DetailedItem"
             android:exported="false" />
         <activity
-            android:name=".menuCarte"
+            android:name=".MenuCarteActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
