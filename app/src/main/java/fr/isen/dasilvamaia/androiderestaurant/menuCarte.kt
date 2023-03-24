@@ -76,6 +76,7 @@ class menuCarte : AppCompatActivity() {
                 intent.putExtra("name_fr", menuItem.name_fr)
                 intent.putExtra("description", menuItem.description)
                 intent.putExtra("price", menuItem.price)
+                intent.putExtra("image", menuItem.images)
                 startActivity(intent)}
                 // Ajouter le code ici pour gérer le clic sur un élément du menu
             }
@@ -88,21 +89,21 @@ class menuCarte : AppCompatActivity() {
 
     data class MenuResult(val data: List<MenuCategory>)
     data class MenuCategory(val name_fr: String, val items: List<MenuItem>)
-    data class MenuItem(val name_fr: String, val description: String, val price: String, val images: List<String>) :
+    data class MenuItem(val name_fr: String, val description: String, val price: String, var images : ArrayList<String>) :
         Parcelable {
 
         constructor(parcel: Parcel) : this(
             parcel.readString()!!,
             parcel.readString()!!,
             parcel.readString()!!,
-            parcel.createStringArrayList()!!
+            parcel.createStringArrayList()!!,
         )
 
         override fun writeToParcel(parcel: Parcel, flags: Int) {
             parcel.writeString(name_fr)
             parcel.writeString(description)
             parcel.writeString(price)
-            parcel.writeStringList(images)
+            parcel.writeString(images.toString())
         }
 
         override fun describeContents(): Int {
