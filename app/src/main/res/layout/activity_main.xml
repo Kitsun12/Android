@@ -8,11 +8,19 @@
     android:outlineProvider="paddedBounds"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/entreesButton"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="76dp"
         android:background="@drawable/button_background"
         android:fontFamily="sans-serif"
         android:outlineProvider="background"
@@ -26,25 +34,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/platsButton"
-        android:layout_width="200dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="sans-serif"
-        android:outlineProvider="background"
-        android:text="Plats"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entreesButton" />
-
-    <Button
         android:id="@+id/dessertsButton"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_background"
         android:fontFamily="sans-serif"
         android:outlineProvider="background"
@@ -54,6 +47,21 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/platsButton" />
+
+    <Button
+        android:id="@+id/platsButton"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="sans-serif"
+        android:outlineProvider="background"
+        android:text="Plats"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entreesButton" />
 
     <TextView
         android:id="@+id/textView"

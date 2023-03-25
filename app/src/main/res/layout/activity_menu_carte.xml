@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/capture_d_cran_2023_02_115435"
     tools:context=".MenuCarteActivity">
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="194dp"
+        android:layout_height="68dp"
         android:fontFamily="@font/bungee_shade"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.075" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuList"
-        android:layout_width="247dp"
-        android:layout_height="638dp"
+        android:layout_width="328dp"
+        android:layout_height="634dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

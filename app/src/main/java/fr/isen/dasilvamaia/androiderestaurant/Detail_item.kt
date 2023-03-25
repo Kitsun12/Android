@@ -57,3 +57,10 @@ data class Prices(
     @SerializedName("size") var size: String? = null
 
 ):java.io.Serializable
+
+data class CartItem(
+    val name: String ?= null,
+    val price: Float ?= null,
+    val quantity: Int ?= null
+
+    )
