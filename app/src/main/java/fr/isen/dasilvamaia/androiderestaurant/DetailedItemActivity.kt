@@ -18,7 +18,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.gson.Gson
 import java.io.File
 
-class DetailedItem : AppCompatActivity() {
+class DetailedItemActivity : AppCompatActivity() {
     var counter = 0
     var total = 0F
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,26 +58,48 @@ class DetailedItem : AppCompatActivity() {
             total = counter * prix
             buttontotal.text = "Total : " + total.toString() + " €"
         }
-        val cartItems = mutableListOf<CartItem>()
+
         buttontotal.setOnClickListener{
-            val gson = Gson()
             val file = File(this.filesDir, "itemcart.json")
+            val gson = Gson()
+            val cartItems: MutableList<CartItem> = mutableListOf()
+
+// Vérifier si le fichier existe
             if (file.exists()) {
-                val json = file.readText()
-                val cartItem = gson.fromJson(json, CartItem::class.java)
-                cartItems.add(cartItem)
-                val alertDialog = AlertDialog.Builder(this)
-                alertDialog.setTitle("Item added to cart")
-                alertDialog.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
-                alertDialog.show()
-            } else {
-                val alertDialog = AlertDialog.Builder(this)
-                alertDialog.setTitle("No items in cart")
-                alertDialog.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
-                alertDialog.show()
+                // Lire le contenu du fichier JSON ligne par ligne dans la liste cartItems
+                file.bufferedReader().useLines { lines ->
+                    lines.forEach { line ->
+                        val item = gson.fromJson(line, CartItem::class.java)
+                        cartItems.add(item)
+                    }
+                }
             }
 
+// Ajouter le nouvel élément à la liste cartItems
+            val selectedItem = CartItem(item.nameFr, prix, counter)
+            cartItems.add(selectedItem)
+
+// Écrire la liste mise à jour dans le fichier JSON
+            file.bufferedWriter().use { writer ->
+                cartItems.forEach { item ->
+                    val itemJson = gson.toJson(item)
+                    writer.write(itemJson)
+                    writer.newLine()
+
+                }
+            }
+            val json = file.readText()
+            println(json)
+// Afficher un message de confirmation
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.setTitle("Item added to cart")
+            alertDialog.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            alertDialog.show()
+
+
+
         }
+
 
 
 

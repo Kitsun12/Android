@@ -21,7 +21,7 @@
             android:name=".Detail_item"
             android:exported="false" />
         <activity
-            android:name=".DetailedItem"
+            android:name=".DetailedItemActivity"
             android:exported="false" />
         <activity
             android:name=".MenuCarteActivity"

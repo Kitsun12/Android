@@ -61,6 +61,6 @@ data class Prices(
 data class CartItem(
     val name: String ?= null,
     val price: Float ?= null,
-    val quantity: Int ?= null
+     val quantity: Int ?= null
 
     )

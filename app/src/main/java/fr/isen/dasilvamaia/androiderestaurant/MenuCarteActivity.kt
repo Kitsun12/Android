@@ -64,7 +64,7 @@ class MenuCarteActivity : AppCompatActivity() {
         menuTextView.text = category
         menuList.adapter = MenuAdapter(menuItems, object : MenuAdapter.OnMenuItemClickListener {
             override fun onMenuItemClick(menuItem: Items) {
-                val intent = Intent(this@MenuCarteActivity, DetailedItem::class.java)
+                val intent = Intent(this@MenuCarteActivity, DetailedItemActivity::class.java)
                 intent.putExtra("dish",menuItem)
                 startActivity(intent)}
                 // Ajouter le code ici pour gérer le clic sur un élément du menu
@@ -73,7 +73,7 @@ class MenuCarteActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        menuTextView.text = "ERROR 404"
+        menuTextView.text = "ER525ROR 404"
     }
 
 }

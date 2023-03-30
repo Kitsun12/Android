@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/capture_d_cran_2023_02_115435"
-    tools:context=".DetailedItem">
+    tools:context=".DetailedItemActivity">
 
     <TextView
         android:id="@+id/nameView"

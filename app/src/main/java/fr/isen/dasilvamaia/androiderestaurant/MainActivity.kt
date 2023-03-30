@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_cart -> {
-                val intent = Intent(this, MenuCarteActivity::class.java)
+                val intent = Intent(this, MenuPanierActivity::class.java)
+                intent.putExtra("category", "panier")
                 startActivity(intent)
                 return true
             }

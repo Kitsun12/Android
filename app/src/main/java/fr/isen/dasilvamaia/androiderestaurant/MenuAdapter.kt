@@ -20,7 +20,6 @@ class MenuAdapter(private val menuItems: List<Items>, private val onMenuItemClic
         holder.itemView.setOnClickListener {
             onMenuItemClickListener.onMenuItemClick(menuItems[position])
         }
-
     }
 
     override fun getItemCount(): Int {
