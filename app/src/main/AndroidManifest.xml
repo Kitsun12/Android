@@ -15,9 +15,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MenuPanierActivity"
+            android:exported="false" />
+        <activity
             android:name=".Detail_item"
             android:exported="false" />
-
         <activity
             android:name=".DetailedItem"
             android:exported="false" />
