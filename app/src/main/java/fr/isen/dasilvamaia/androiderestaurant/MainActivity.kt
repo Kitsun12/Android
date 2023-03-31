@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import android.widget.Toolbar
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,13 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+    override fun onStop() {
+        super.onStop()
+        val file = File(this.filesDir, "itemcart.json")
+        if (file.exists()) {
+            file.delete()
         }
     }
 }

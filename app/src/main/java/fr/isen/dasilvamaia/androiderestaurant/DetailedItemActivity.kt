@@ -64,7 +64,7 @@ class DetailedItemActivity : AppCompatActivity() {
             val gson = Gson()
             val cartItems: MutableList<CartItem> = mutableListOf()
 
-// Vérifier si le fichier existe
+            // Vérifier si le fichier existe
             if (file.exists()) {
                 // Lire le contenu du fichier JSON ligne par ligne dans la liste cartItems
                 file.bufferedReader().useLines { lines ->
@@ -75,11 +75,11 @@ class DetailedItemActivity : AppCompatActivity() {
                 }
             }
 
-// Ajouter le nouvel élément à la liste cartItems
+            // Ajouter le nouvel élément à la liste cartItems
             val selectedItem = CartItem(item.nameFr, prix, counter)
             cartItems.add(selectedItem)
 
-// Écrire la liste mise à jour dans le fichier JSON
+            // Écrire la liste mise à jour dans le fichier JSON
             file.bufferedWriter().use { writer ->
                 cartItems.forEach { item ->
                     val itemJson = gson.toJson(item)
@@ -90,7 +90,7 @@ class DetailedItemActivity : AppCompatActivity() {
             }
             val json = file.readText()
             println(json)
-// Afficher un message de confirmation
+            // Afficher un message de confirmation
             val alertDialog = AlertDialog.Builder(this)
             alertDialog.setTitle("Item added to cart")
             alertDialog.setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
